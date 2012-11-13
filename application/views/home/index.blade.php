@@ -1,7 +1,7 @@
 @layout('master')
 
 @section('content')
-	<h1>Helloooooo</h1>
+	<h1>sorrytodisapointyou.com</h1>
 	{{ Form::open('/') }}
 		{{ Form::label('name', 'Sorry to disapoint you')}}
 		{{ Form::text('name') }}
