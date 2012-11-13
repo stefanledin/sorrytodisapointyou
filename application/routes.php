@@ -36,6 +36,10 @@ Route::get('/', function()
 {
 	return View::make('home.index');
 });
+Route::post('/', function ()
+{
+	dd(Input::all());
+});
 
 Route::get('about', function ()
 {
