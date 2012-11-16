@@ -34,11 +34,21 @@
 
 Route::get('/', function()
 {
+	// TODO: Model that gets quotes from the DB
 	return View::make('home.index');
 });
 Route::post('/', function ()
 {
-	dd(Input::all());
+	$name = Input::get('name');
+	$device = Input::get('device');
+	$disarmed = Input::get('disarmed');
+	Quote::create(array(
+		'name' => $name,
+		'device' => $device,
+		'disarmed' => $disarmed
+	));
+
+	return View::make('home.index');
 });
 
 Route::get('about', function ()
