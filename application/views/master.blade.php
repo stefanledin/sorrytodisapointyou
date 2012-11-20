@@ -12,7 +12,6 @@
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        <link rel="stylesheet" href="css/normalize.css">
         {{ HTML::style('css/normalize.css')}}
         {{ HTML::style('css/style.css')}}
 
