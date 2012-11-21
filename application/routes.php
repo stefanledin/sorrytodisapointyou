@@ -43,20 +43,15 @@ Route::post('/', function ()
 	$name = Input::get('name');
 	$device = Input::get('device');
 	$disarmed = Input::get('disarmed');
-	// Store them in an array
-	$inputs = array($name,$device,$disarmed);
+	
 	// Validate the stuff
-	$validation = Validator::make(array(
+	$validation = Quote::validate(array(
 		'name' => $name,
 		'device' => $device,
 		'disarmed' => $disarmed
-	), array(
-		'name' => 'required',
-		'device' => 'required',
-		'disarmed' => 'required'
 	));
 
-	if ($validation->fails()) {
+	if ($validation !== true) {
 		return Redirect::to('/')->with_errors($validation);
 	}
 
