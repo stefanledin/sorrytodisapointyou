@@ -39,9 +39,27 @@ Route::get('/', function()
 });
 Route::post('/', function ()
 {
+	// Store data from inputs in variables
 	$name = Input::get('name');
 	$device = Input::get('device');
 	$disarmed = Input::get('disarmed');
+	// Store them in an array
+	$inputs = array($name,$device,$disarmed);
+	// Validate the stuff
+	$validation = Validator::make(array(
+		'name' => $name,
+		'device' => $device,
+		'disarmed' => $disarmed
+	), array(
+		'name' => 'required',
+		'device' => 'required',
+		'disarmed' => 'required'
+	));
+
+	if ($validation->fails()) {
+		return Redirect::to('/')->with_errors($validation);
+	}
+
 	Quote::create(array(
 		'name' => $name,
 		'device' => $device,

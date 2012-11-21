@@ -11,4 +11,5 @@
 		{{ Form::text('disarmed') }}
 		{{ Form::submit('Skicka')}}
 	{{ Form::close() }}
+	{{ $errors->has() ? '<div class="errors">Sorry to disapoint you, but the form is invalid.</div>' : '' }}
 @endsection
