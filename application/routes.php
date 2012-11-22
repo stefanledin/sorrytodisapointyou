@@ -34,9 +34,10 @@
 
 Route::get('/', function()
 {
-	// TODO: Model that gets quotes from the DB
-	return View::make('home.index');
+	$quotes = Quote::all();
+	return View::make('home.index')->with(array('quotes' => $quotes));
 });
+
 Route::post('/', function ()
 {
 	// Store data from inputs in variables
@@ -51,16 +52,19 @@ Route::post('/', function ()
 		'disarmed' => $disarmed
 	));
 
+	// If the validation fails
 	if ($validation !== true) {
 		return Redirect::to('/')->with_errors($validation);
 	}
 
+	// Insert the quote to the database
 	Quote::create(array(
 		'name' => $name,
 		'device' => $device,
 		'disarmed' => $disarmed
 	));
 
+	// Return home.
 	return View::make('home.index');
 });
 
