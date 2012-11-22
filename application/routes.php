@@ -34,8 +34,13 @@
 
 Route::get('/', function()
 {
-	$quotes = Quote::all();
-	return View::make('home.index')->with(array('quotes' => $quotes));
+	// Get the data
+	$quotes = Quote::order_by('created_at', 'DESC')->get();
+	
+	// Make the view and pass the data
+	return View::make('home.index')->with(array(
+		'quotes' => $quotes
+	));
 });
 
 Route::post('/', function ()
