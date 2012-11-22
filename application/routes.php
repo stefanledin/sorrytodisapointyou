@@ -70,7 +70,7 @@ Route::post('/', function ()
 	));
 
 	// Return home.
-	return View::make('home.index');
+	return Redirect::to('/');
 });
 
 Route::get('about', function ()
